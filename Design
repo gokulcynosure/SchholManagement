@@ -1,0 +1,42 @@
+				SCHOOL
+
+OBJECTS:
+
+•	Students
+•	Teachers
+•	Classes
+•	Subjects
+•	Academic Year
+
+FIELDS:
+
+1.	Academic Year
+•	Year
+•	Start Date
+•	End Date
+
+2.	 Classes
+•	 Academic year (master Detail)
+•	Class Name
+
+3.Students
+•	Personal details (FirstName,LastName,…)
+
+4. Class Student
+•	 Class (Master Detail)
+•	Student ( Master Detail)
+
+5. Subjects
+•	 Subject Name
+•	Class (Master Detail)
+•	Teacher (lookup)
+
+6. Teacher
+•	Personal details (FirstName,LastName,…)
+
+
+
+
+
+
+
