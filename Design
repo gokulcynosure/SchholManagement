@@ -1,4 +1,4 @@
-				SCHOOL
+					SCHOOL
 
 OBJECTS:
 
@@ -7,32 +7,109 @@ OBJECTS:
 •	Classes
 •	Subjects
 •	Academic Year
-
+•	Class Student
+•	Exam
+•	Exam Time Table
+•	Periods
+•	School Time Table
 FIELDS:
 
 1.	Academic Year
 •	Year
 •	Start Date
 •	End Date
+•	Classes Count (Roll up Summary)
+
+YEAR	START DATE	END DATE	Classes count
+2021	JUN 1 - 2021	APR 30 - 2022	 7
+2022	JUN1 - 2022	APR 30 - 2023	 10
 
 2.	 Classes
 •	 Academic year (master Detail)
 •	Class Name
+•	Student Count (Rollup Summary)
+•	Subjects Count (Rollup summary)
 
-3.Students
+Class Name	 Year	 Students Count	Subjects Count
+ 1	          2022	   20	5
+2	          2022	   45	6
+
+3.	Students
 •	Personal details (FirstName,LastName,…)
 
-4. Class Student
+First Name	 Last Name	 DOB	      PHN Number	 Gender
+Gokul	            Mari	25-09-2011	887-094-8104	Male
+Ram	               G	30-05-2010	895-123-7890	Male
+Ishu	               G	8-10-2015	976-542-1023	 Female
+
+4.	Class Student
 •	 Class (Master Detail)
 •	Student ( Master Detail)
 
-5. Subjects
-•	 Subject Name
-•	Class (Master Detail)
-•	Teacher (lookup)
+Class	Student
+6	Gokul
+2	Ishu
 
-6. Teacher
+5.	Subjects
+•	 Subject Name
+•	Class (lookup)
+•	Teacher (lookup)
+Subject	Class	Teacher
+English 2	Madhu
+Maths 	2	Arun
+
+6.	 Teacher
 •	Personal details (FirstName,LastName,…)
+
+First Name	 Last Name	 DOB	      PHN Number	Gender
+Madhu	               G	25-09-2001	887-094-8104	Female
+Arun	               G	   30-05-2000	895-123-7890	Male
+
+7.	Exam
+•	Exam Name
+
+8.	Exam Time Table
+•	Exam (lookup)
+•	Subject (lookup)
+•	Class (lookup)
+•	Exam date
+•	Time
+
+Exam	     class	Subject	    Date	Time
+Mid Term 	9	Tamil 	30 Jan 2023	10.00 am
+Mid Term 	9	English 31 Jan 2023	10.00 am
+
+
+9.	Periods
+•	Period Number
+•	Starting Time
+•	Ending Time
+
+Period Number	Starting Time	Ending Time
+1	         9.00 am	10.00 am
+2	        10.00 am	11.00 am
+3	        11.00 am	12.00 pm
+
+Lunch    12 pm – 1 pm
+
+Period Number	Starting Time	Ending Time
+4	         1.00 pm	2.00 pm
+5	         2.00 pm	3.00 pm
+6	         3.00 pm	4.00 pm
+
+
+10.	School Time Table
+•	Periods (Master Detail)
+•	class (lookup)
+•	Subject (Lookup)
+•	Teacher (Lookup)
+Periods	 class	Subject	Teacher
+1	 2	 Tamil	Arun
+2	 2	English	Madhu
+3	2	Maths	Kumar
+4	2	Science	Anita
+5	2	Social	Babu
+6	2	PT	Boult
 
 
 
