@@ -50,13 +50,26 @@ Class	Student
 6	Gokul
 2	Ishu
 
-5.	Subjects
+
+5	Subjects
 •	 Subject Name
-•	Class (lookup)
-•	Teacher (lookup)
-Subject	Class	Teacher
-English 2	Madhu
-Maths 	2	Arun
+
+No 	Subject
+1	Tamil
+2	English
+3	Maths
+
+	Class Subjects
+
+•	Subjects (Master Detail)
+•	Class (Master Detail)
+•	Teacher (Lookup)
+
+Subject 	Class	Teacher
+Tamil	         1	Madhu
+English		 1	Arun
+
+
 
 6.	 Teacher
 •	Personal details (FirstName,LastName,…)
@@ -65,19 +78,28 @@ First Name	 Last Name	 DOB	      PHN Number	Gender
 Madhu	               G	25-09-2001	887-094-8104	Female
 Arun	               G	   30-05-2000	895-123-7890	Male
 
-7.	Exam
+
+7	Exam
+
 •	Exam Name
 
-8.	Exam Time Table
-•	Exam (lookup)
+No 	Exam
+1	Mid term
+2	Half Yearly
+3	Annual
+
+8	Exam Time Table
+
+•	Exam (Master Detail)
 •	Subject (lookup)
-•	Class (lookup)
+•	Class (Master Detail)
 •	Exam date
 •	Time
 
-Exam	     class	Subject	    Date	Time
+		Exam	class	Subject	Date	Time
 Mid Term 	9	Tamil 	30 Jan 2023	10.00 am
 Mid Term 	9	English 31 Jan 2023	10.00 am
+
 
 
 9.	Periods
