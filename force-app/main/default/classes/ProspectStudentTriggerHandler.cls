@@ -1,5 +1,4 @@
 public class ProspectStudentTriggerHandler extends TriggerHandler {
-    
     public override void afterInsert() {
         for(Prospect_Student__c student : (List<Prospect_Student__c>) Trigger.new) {
             Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
