@@ -17,8 +17,7 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
         Map<String,Id> classWithId = new Map<String,Id>();
         List<StudentClass__c> studentClassList = new List<StudentClass__c>();
         List<Student__c> studentsList = new List<Student__c>();
-        Map<String,Date> classandYear = new map<String,Date>(); 
-        List<String> clsYear = new List<String>();
+        List<String> classAndYear = new List<String>();
         
         // Find Which record Status was updated to new value and we add those record's id to set
         for(Prospect_Student__c student : (List<Prospect_Student__c>) Trigger.new){
@@ -39,27 +38,26 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
                 newStu.Joining_Year__c = candidate.Joining_Year__c;
                 studentsList.add(newStu);
                 // next we need to create a class student for this student so we getting join year and his class
-                classandYear.put(candidate.Class__c,candidate.Joining_Year__c);
+                integer value = candidate.Joining_Year__c.year();
+                String year = string.valueOf(value);
+                String abc = candidate.Class__c +  year;
+                classAndYear.add(abc);
+
             
         }
         // Inserting student record then only we can able to create student class record
         Insert studentsList;
-        //We just adding class name and year Into string Then only using this we can get the class Id
-         for(String key : classandYear.keyset()){
-                integer value = classandYear.get(key).year();
-                String year = string.valueOf(value);
-                clsYear.add(key + year);
-            }
+       
         
         // using the actualClassName we can get the cls Id using query
-        for(Class__c clI : [select id,Name,Class__c From Class__c where Class_Name__c IN : clsYear]){
-                classWithId.put(clI.Class__c,clI.Id);
+        for(Class__c clI : [select id,Name,Class__c,Class_Name__c From Class__c where Class_Name__c IN : classAndYear]){
+                classWithId.put(clI.Class_Name__c,clI.Id);
             
         }
-        List<string>  classKeys = new List<String>(classandYear.keyset());
+        //List<string>  classKeys = new List<String>(classandYear.keyset());
         Integer i = 0;
         // new we have a class Id and student Id so we can able to create student Class
-         for(String key : classKeys ){
+         for(String key : classAndYear ){
                 StudentClass__c stuCls = new StudentClass__c();
                 stuCls.Class__c = classWithId.get(key);
                 stuCls.Student__c = studentsList.get(i).id;
