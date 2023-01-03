@@ -23,7 +23,7 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
         // Find Which record Status was updated to new value and we add those record's id to set
         for(Prospect_Student__c student : (List<Prospect_Student__c>) Trigger.new){
             Prospect_Student__c oldStudent = (Prospect_Student__c) Trigger.oldMap.get(student.id);
-            if(student.Status__c != oldStudent.Status__c && candidate.Status__C == 'Approved') {
+            if(student.Status__c != oldStudent.Status__c && student.Status__C == 'Approved') {
                 idSet.add(student.Id);
             }
         }
