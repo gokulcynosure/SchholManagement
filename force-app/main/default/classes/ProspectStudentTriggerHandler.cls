@@ -11,14 +11,12 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
             System.debug('Submitted for approval successfully: '+result.isSuccess());
         }
     }
-    
     public override void afterUpdate(){
         Set<Id> idSet = new Set<Id>();
         Map<String,Id> classWithId = new Map<String,Id>();
         List<StudentClass__c> studentClassList = new List<StudentClass__c>();
         List<Student__c> studentsList = new List<Student__c>();
         List<String> classAndYear = new List<String>();
-        
         // Find Which record Status was updated to new value and we add those record's id to set
         for(Prospect_Student__c student : (List<Prospect_Student__c>) Trigger.new){
             Prospect_Student__c oldStudent = (Prospect_Student__c) Trigger.oldMap.get(student.id);
@@ -42,18 +40,13 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
                 String year = string.valueOf(value);
                 String abc = candidate.Class__c +  year;
                 classAndYear.add(abc);
-
-            
-        }
+            }
         // Inserting student record then only we can able to create student class record
         Insert studentsList;
-       
-        
-        // using the actualClassName we can get the cls Id using query
+       // using the actualClassName we can get the cls Id using query
         for(Class__c clI : [select id,Name,Class__c,Class_Name__c From Class__c where Class_Name__c IN : classAndYear]){
                 classWithId.put(clI.Class_Name__c,clI.Id);
-            
-        }
+            }
         //List<string>  classKeys = new List<String>(classandYear.keyset());
         Integer i = 0;
         // new we have a class Id and student Id so we can able to create student Class
@@ -67,5 +60,4 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
         Insert studentClassList;
     }
     }
-    
 }
