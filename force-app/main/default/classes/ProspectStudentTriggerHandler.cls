@@ -25,6 +25,7 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
             Integer i = 0;
             List<StudentClass__c> studentClassList = new List<StudentClass__c>();
             // Once we getting Student Id and Class Id we create a StudentClass Record for respective Student
+            if(studentsList.size() == classAndYear.size() ){
             for(String key : classAndYear ){
                 StudentClass__c stuCls = new StudentClass__c();
                 stuCls.Class__c = classWithId.get(key);
@@ -32,6 +33,9 @@ public class ProspectStudentTriggerHandler extends TriggerHandler {
                 studentClassList.add(stuCls);
                 i++;
             }
+        }else{
+            throw new Exception('Some Students records are not Inserted Properly');
+        }
             Insert studentClassList;
         }
     }
