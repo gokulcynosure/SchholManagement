@@ -126,12 +126,19 @@ public class ProspectStudentTriggerHandlerTest {
     @isTest
     static void testWhenWeUpdateApprovedCheckStudentClassCreatedBulk(){
         // Given
+        List<Class__c> classList = new List<Class__c>();
         
         Class__c newCls = new Class__c();
         newCls.Class__c ='VI';
         newCls.Year__c = '2022';
+		classList.ADD(newCls);
         
-        Insert newCls;
+        Class__c newCls1 = new Class__c();
+        newCls1.Class__c ='VII';
+        newCls1.Year__c = '2022';
+        classList.ADD(newCls1);
+        
+        Insert classList;
         
         List<Prospect_Student__c> studentList = new List<Prospect_Student__c>();
         
@@ -150,7 +157,7 @@ public class ProspectStudentTriggerHandlerTest {
         ps2.DOB__c = Date.newInstance(1960, 2, 17);
         ps2.Gender__c = 'Male';
         ps2.Joining_Year__c = Date.newInstance(2022, 7, 6);
-        ps2.Class__c = 'VI';
+        ps2.Class__c = 'VII';
         ps2.Status__c = 'New';
         studentList.add(ps2);
         
